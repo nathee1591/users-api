@@ -18,7 +18,7 @@ app.get('/users', (req, res) => {
         'SELECT * FROM users',
         function(err, results, fields) {
             console.log(results)
-            res.send([])
+            res.send(results)
         }
     )
 })
