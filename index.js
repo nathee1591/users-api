@@ -36,7 +36,7 @@ app.post('/create', (req, res) => {
     )
 })
 
-app.delete('/users/delete', (req, res) => {
+app.delete('/users', (req, res) => {
     connection.query(
         'DELETE FROM users WHERE id = ?', [req.body.id],
         function(err, results, fields) {
