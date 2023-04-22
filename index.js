@@ -26,7 +26,7 @@ app.get('/users', (req, res) => {
 
 app.post('/create', (req, res) => {
     connection.query(
-        'INSERT INTO users (fname, lname, username, password, avatar) VALUES (?, ?, ?, ?, ?)', [req.body.fname,req.body.lname,req.body.username, req.body.password, req.body.avatar],
+        'INSERT INTO users (fname, lname, username, avatar) VALUES (?, ?, ?, ?)', [req.body.fname,req.body.lname,req.body.username, req.body.avatar],
         function(err, results, fields) {
             if (err) throw err;
             console.log(results)
@@ -49,9 +49,8 @@ app.delete('/users', (req, res) => {
 
 app.put('/update', (req, res) => {
     connection.query(
-        'UPDATE users SET id = ?, fname = ?, lname = ?, username = ?, password = ?, avatar = ? WHERE id = ?', 
-        [req.body.id, req.body.fname,
-        req.body.lname, req.body.username, req.body.password, req.body.avatar, req.body.id],
+        'UPDATE users SET fname = ?, lname = ?, username = ?, avatar = ? WHERE id = ?', 
+        [req.body.fname, req.body.lname, req.body.username, req.body.avatar, req.body.id],
         function(err, results, fields) {
             if (err) throw err;
             console.log(results)
