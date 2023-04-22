@@ -14,6 +14,23 @@ app.get('/', (req, res) => {
     res.send('Hello world!!')
 })
 
+app.get('/users/:id', function (req, res, next) {
+    const id = req.params.id;
+    connection.query(
+      'SELECT * FROM users WHERE id = ?',
+      [id],
+      function (err, results) {
+        if (!err) {
+          res.json(results);
+          res.json({ "Status": "OK" });
+        }
+        else {
+          res.json({ "Status": "ERROR" });
+        }
+      }
+    );
+  })
+
 app.get('/users', (req, res) => {
     connection.query(
         'SELECT * FROM users',
